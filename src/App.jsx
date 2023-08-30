@@ -4,17 +4,38 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true); 
-  const [history, setHistory] = useState(null); 
+  const [history, setHistory] = useState([Array(9).fill(null)]); 
+  const [currentMove, setCurrentMove] = useState(0);
+  const currentSquares = history[history.length - 1]; 
   
   function onPlay(nextSquares) {
-    setSquares(nextSquares);
+    setHistory([...history, nextSquares])
     setXIsNext(!xIsNext);
   };
+  
+  function jumpTo(move) {
+    
+  }
+
+  const moves = history.map((squars, move) => {
+    let description = '';
+
+    if (move > 0) {
+      description = `go to ${move}`;
+    } else {
+      description = 'go to start the game';
+    };
+    return <li>
+        <button>{description}</button>
+      </li>
+  }
+  );
+
   return (
     <div>
-      <Game xIsNext={xIsNext} squares={squares} onPlay={onPlay} />
+      <Game xIsNext={xIsNext} squares={currentSquares} onPlay={onPlay} />
+      <ol>{moves}</ol>
     </div>
   ) 
 }
