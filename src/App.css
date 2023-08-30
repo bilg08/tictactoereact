@@ -1,0 +1,23 @@
+.square {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.board-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2px
+}
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
